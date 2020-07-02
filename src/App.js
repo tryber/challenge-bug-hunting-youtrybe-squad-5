@@ -17,7 +17,7 @@ class App extends Component {
         <div className="App">
           <Header />
           <Switch>
-            <Route path="/"><InitialPage /></Route>
+            <Route exact path="/"><InitialPage /></Route>
             <Route
               exact path="/watch/:videoId"
               render={(props) => <VideoPage {...props} />}
