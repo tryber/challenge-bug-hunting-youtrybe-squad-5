@@ -10,21 +10,22 @@ class VideoCard extends Component {
   }
 
   render() {
+    const { video } = this.props;
     return (
       <div className="suggested-video search-result">
         <div className="thumbnail">
           <img
             alt="thumbnail"
-            src={this.props.video.snippet.thumbnails.medium.url}
+            src={video.snippet.thumbnails.medium.url}
           />
-          {this.props.video.id.kind === 'youtube#video' ? <span>17:30</span> : null}
+          {video.id.kind === 'youtube#video' ? <span>17:30</span> : null}
         </div>
 
         <div className="thumbnail-info">
-          <h2>{this.props.video.snippet.title}</h2>
-          <div className="channel">{this.props.video.snippet.channelTitle}</div>
-          {this.props.video.id.kind === 'youtube#video' ? <div className="views">792K views</div> : null}
-          <p className="description">{this.props.video.snippet.description}</p>
+          <h2>{video.snippet.title}</h2>
+          <div className="channel">{video.snippet.channelTitle}</div>
+          {video.id.kind === 'youtube#video' ? <div className="views">792K views</div> : null}
+          <p className="description">{video.snippet.description}</p>
         </div>
       </div>
     );
