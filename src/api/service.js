@@ -15,7 +15,7 @@ export const searchVideos = (searchText) => {
   //       .catch(error => reject(error))
   //   );
   // })
-  return mockSearchVideo;
+  return new Promise((resolve) => resolve(mockSearchVideo));
 };
 
 export const getVideoInfo = (videoId) => {
@@ -29,7 +29,7 @@ export const getVideoInfo = (videoId) => {
   //       .catch(error => reject(error))
   //   );
   // })
-  return mockGetVideoInfo;
+  return new Promise((resolve) => resolve(mockGetVideoInfo));
 };
 
 export const getVideoComments = (videoId) => {
@@ -43,5 +43,5 @@ export const getVideoComments = (videoId) => {
   //       .catch(error => reject(error))
   //   );
   // })
-  return mockGetVideoComments;
+  return new Promise((resolve) => resolve(mockGetVideoComments));
 };

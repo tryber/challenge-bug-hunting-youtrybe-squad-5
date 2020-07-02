@@ -10,11 +10,12 @@ class SearchBar extends Component {
     this.state = {
       searchInput: '',
     };
+    this.handleSearchInput = this.handleSearchInput.bind(this);
   }
 
   handleSearchInput(event) {
-    const { target: { name } } = event;
-    this.setState({ searchInput: name });
+    const { target: { value } } = event;
+    this.setState({ searchInput: value });
   }
 
   render() {
