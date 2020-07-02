@@ -13,7 +13,7 @@ import InitialPage from './components/content/InitialPage';
 class App extends Component {
   render() {
     return (
-      <Router> 
+      <Router>
         <div className="App">
           <Header />
           <Switch>
