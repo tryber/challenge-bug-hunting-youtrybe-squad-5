@@ -41,6 +41,7 @@ export const getVideoComments = (videoId) => {
    return new Promise((resolve, reject) => {
      resolve(
        fetch(URL)
+          .then(response => response.json())
           .then((data) => data)
           .catch(error => reject(error))
      );
