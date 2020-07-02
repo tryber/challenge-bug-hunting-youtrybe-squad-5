@@ -27,7 +27,7 @@ describe('Implementação módulo de acesso à API do Youtube', () => {
   });
 
 
-  test.skip('getVideoInfo', () => {
+  test('getVideoInfo', () => {
     const videoId = 'F2lklMky2N0'
     jest.spyOn(global, 'fetch').mockImplementation(() =>
       Promise.resolve({
@@ -47,7 +47,7 @@ describe('Implementação módulo de acesso à API do Youtube', () => {
     });
   });
 
-  test.skip('getVideoComments', () => {
+  test('getVideoComments', () => {
     const videoId = 'F2lklMky2N0'
     jest.spyOn(global, 'fetch').mockImplementation(() =>
       Promise.resolve({

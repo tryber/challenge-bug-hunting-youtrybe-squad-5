@@ -3,7 +3,7 @@ import mockGetVideoInfo from "../__mocks__/mockGetVideoInfo";
 import mockGetVideoComments from "../__mocks__/mockGetVideoComments";
 
 let YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
-const YOUTUBE_AUTH_KEY = 'AIzaSyBaxGE7vPu1dZQaOohv2uqTgCPX_bn-0LQ';
+const YOUTUBE_AUTH_KEY = process.env.REACT_APP_KEY;
 
 export const searchVideos = (searchText) => {
   const URL = `${YOUTUBE_API_URL}/search?part=snippet&q=${searchText}&maxResults=25&key=${YOUTUBE_AUTH_KEY}`;
@@ -16,7 +16,7 @@ export const searchVideos = (searchText) => {
           .catch(error => reject(error))
      );
    })
-  return new Promise((resolve) => resolve(mockSearchVideo));
+  //return new Promise((resolve) => resolve(mockSearchVideo));
 };
 
 export const getVideoInfo = (videoId) => {
@@ -26,11 +26,12 @@ export const getVideoInfo = (videoId) => {
    return new Promise((resolve, reject) => {
      resolve(
        fetch(URL)
+        .then(response => response.json())
         .then((data) => data)
         .catch(error => reject(error))
     );
  })
-  return new Promise((resolve) => resolve(mockGetVideoInfo));
+  //return new Promise((resolve) => resolve(mockGetVideoInfo));
 };
 
 export const getVideoComments = (videoId) => {
@@ -40,9 +41,9 @@ export const getVideoComments = (videoId) => {
    return new Promise((resolve, reject) => {
      resolve(
        fetch(URL)
-         .then((data) => data)
-         .catch(error => reject(error))
+          .then((data) => data)
+          .catch(error => reject(error))
      );
    })
-  return new Promise((resolve) => resolve(mockGetVideoComments));
+  //return new Promise((resolve) => resolve(mockGetVideoComments));
 };
