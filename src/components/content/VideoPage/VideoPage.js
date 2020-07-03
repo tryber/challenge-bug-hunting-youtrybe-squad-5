@@ -34,7 +34,7 @@ class VideoPage extends Component {
 
   updateVideoInfo(videoId) {
     getVideoInfo(videoId).then((data) => this.setState({ videoInfo: data.items[0] }));
-    getVideoComments(videoId).then((data) => this.setState({ videoComments: data.items })).catch(e => console.log(e));
+    getVideoComments(videoId).then((data) => this.setState({ videoComments: data.items }));
   }
 
   render() {
@@ -43,10 +43,11 @@ class VideoPage extends Component {
     if (redirect) {
       this.setState({ redirect: false });
       return (
-        <Redirect to={{
-          pathname: `/watch/${videoId}`,
-          state: { data: relatedVideos },
-        }}
+        <Redirect
+          to={{
+            pathname: `/watch/${videoId}`,
+            state: { data: relatedVideos },
+          }}
         />
       );
     }
