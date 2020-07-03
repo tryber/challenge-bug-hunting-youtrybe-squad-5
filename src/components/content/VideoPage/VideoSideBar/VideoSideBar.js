@@ -7,7 +7,7 @@ import '../../../../css/sideBar.css';
 class VideoSideBar extends Component {
   render() {
     const { relatedVideos, handleSelectedVideo } = this.props;
-    return {
+    return (
       relatedVideos.map((video) => (
         <Fragment key={video.id.videoId}>
           <div
@@ -26,7 +26,7 @@ class VideoSideBar extends Component {
           </div>
         </Fragment>
       ))
-    }
+    );
   }
 }
 
