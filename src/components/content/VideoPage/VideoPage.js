@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer/VideoPlayer';
 import VideoPlayerDescription from './VideoPlayer/VideoPlayerDescription';
 import VideoPlayerInfo from './VideoPlayer/VideoPlayerInfo';
 import VideoPlayerComments from './VideoPlayerComments/VideoPlayerComments';
 import VideoSideBar from './VideoSideBar/VideoSideBar';
-import { getVideoInfo, getVideoComments } from './../../../api/service';
+import { getVideoInfo, getVideoComments } from '../../../api/service';
 
 class VideoPage extends Component {
   constructor(props) {
@@ -21,31 +22,32 @@ class VideoPage extends Component {
   }
 
   componentDidMount() {
-    getVideoInfo(this.state.videoId).then((data) =>
-      this.setState({ videoInfo: data.items[0] }),
-    );
+    getVideoInfo(this.state.videoId).then((data) => this.setState({ videoInfo: data.items[0] }));
 
-    getVideoComments(this.state.videoId).then((data) =>
-      this.setState({ videoComments: data.items }),
-    );
+    getVideoComments(this.state.videoId).then((data) => this.setState({ videoComments: data.items }));
+    this.setState({ redirect: false });
   }
 
   handleSelectedVideo(videoId) {
-    this.setState({ videoId: videoId });
-    getVideoInfo(this.state.videoId).then((data) =>
-      this.setState({ videoInfo: data.items[0] }),
-    );
+    this.setState({ videoId });
+    getVideoInfo(this.state.videoId).then((data) => this.setState({ videoInfo: data.items[0] }));
 
-    getVideoComments(this.state.videoId).then((data) =>
-      this.setState({ videoComments: data.items }),
-    );
-    this.props.history.push(`/watch/${videoId}`);
-    console.log(this.props);
+    getVideoComments(this.state.videoId).then((data) => this.setState({ videoComments: data.items }));
+    this.setState({ redirect: true });
   }
 
   render() {
-    if (!this.state.videoInfo || !this.state.videoComments)
-      return <main></main>;
+    if (!this.state.videoInfo || !this.state.videoComments) return <main />;
+
+    if (this.state.redirect) {
+      return (
+        <Redirect to={{
+          pathname: `/watch/${this.state.videoId}`,
+          state: { data: this.state.relatedVideos },
+        }}
+        />
+      );
+    }
 
     return (
       <main>
