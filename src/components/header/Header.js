@@ -6,14 +6,21 @@ import ProfileFeatures from './ProfileFeatures';
 
 import '../../css/navbar.css';
 
-const Header = () => {
-  return (
-    <nav className="nav">
-      <Menu />
-      <SearchBar />
-      <ProfileFeatures />
-    </nav>
-  );
-};
+const Header = ({ changeTheme, theme }) => (
+  <nav className="nav">
+    <Menu />
+    <SearchBar />
+    <label className="switch" htmlFor="themeSwitch">
+      <input
+        type="checkbox"
+        id="themeSwitch"
+        onChange={changeTheme}
+        defaultChecked={theme === 'dark'}
+      />
+      <span className="slider round" />
+    </label>
+    <ProfileFeatures />
+  </nav>
+);
 
 export default Header;
