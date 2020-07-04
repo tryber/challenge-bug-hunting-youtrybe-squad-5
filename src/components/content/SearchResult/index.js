@@ -4,6 +4,7 @@ import VideoCard from './VideoCard/VideoCard';
 
 import '../../../css/sideBar.css';
 import { searchVideos } from '../../../api/service';
+import './style.css';
 
 class SearchResult extends Component {
   constructor(props) {
@@ -16,11 +17,17 @@ class SearchResult extends Component {
   }
 
   componentDidMount() {
-    const { match: { params: { searchParam } } } = this.props;
+    const {
+      match: {
+        params: { searchParam },
+      },
+    } = this.props;
 
-    searchVideos(searchParam).then((data) => {
-      this.removeChannel(data.items);
-    }).catch((error) => this.setState({ error }));
+    searchVideos(searchParam)
+      .then((data) => {
+        this.removeChannel(data.items);
+      })
+      .catch((error) => this.setState({ error }));
   }
 
   removeChannel(items) {
@@ -31,8 +38,8 @@ class SearchResult extends Component {
   render() {
     const { data, error } = this.state;
 
-    if (data.length < 1) return (<div>Loading...</div>);
-    if (error !== '') return (<div>{error}</div>);
+    if (data.length < 1) return <div className="loading">Loading...</div>;
+    if (error !== '') return <div>{error}</div>;
     return (
       <div>
         {data.map((item) => (
