@@ -13,3 +13,7 @@ body {
   font-weight: normal;
   line-height: 1.7;
 }
+
+.dark {
+  background-color: rgb(32, 32, 32);
+}
