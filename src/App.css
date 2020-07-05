@@ -2,7 +2,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition: background-color 200ms;
+}
+
+.App {
+  transition: all 300ms;
 }
 
 html {
@@ -18,9 +21,20 @@ body {
 .dark {
   background-color: rgb(32, 32, 32);
   color: white;
-  transition: all 200ms;
 }
 
 .dark .search-result, .dark .logo {
   color: white;
+}
+
+.dark .description p {
+  color: white;
+}
+
+.dark .description h2 {
+  color: white;
+}
+
+.dark .description h3 {
+  color: rgb(202, 200, 200);
 }
