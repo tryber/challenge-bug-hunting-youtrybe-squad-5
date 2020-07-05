@@ -4,12 +4,37 @@
   padding: 0;
 }
 
+.App {
+  transition: all 300ms;
+}
+
 html {
   font-size: 10px;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: normal;
   line-height: 1.7;
+}
+
+.dark {
+  background-color: rgb(32, 32, 32);
+  color: white;
+}
+
+.dark .search-result, .dark .logo {
+  color: white;
+}
+
+.dark .description p {
+  color: white;
+}
+
+.dark .description h2 {
+  color: white;
+}
+
+.dark .description h3 {
+  color: rgb(202, 200, 200);
 }
